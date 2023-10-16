@@ -32,29 +32,29 @@ offset_right = 382.0
 offset_bottom = 91.0
 text = "Host"
 
-[node name="CanvasGroup" type="CanvasGroup" parent="."]
+[node name="Group" type="CanvasGroup" parent="."]
 position = Vector2(113, 158)
 
-[node name="Port" type="TextEdit" parent="CanvasGroup"]
+[node name="Port" type="TextEdit" parent="Group"]
 offset_left = 119.0
 offset_top = 67.0
 offset_right = 240.0
 offset_bottom = 112.0
 
-[node name="RichTextLabel2" type="RichTextLabel" parent="CanvasGroup"]
+[node name="RichTextLabel2" type="RichTextLabel" parent="Group"]
 offset_left = 62.0
 offset_top = 67.0
 offset_right = 102.0
 offset_bottom = 107.0
 text = "Port:"
 
-[node name="Name" type="TextEdit" parent="CanvasGroup"]
+[node name="Name" type="TextEdit" parent="Group"]
 offset_left = 117.0
 offset_top = -3.0
 offset_right = 396.0
 offset_bottom = 53.0
 
-[node name="RichTextLabel3" type="RichTextLabel" parent="CanvasGroup"]
+[node name="RichTextLabel3" type="RichTextLabel" parent="Group"]
 offset_left = -3.0
 offset_top = 10.0
 offset_right = 110.0
