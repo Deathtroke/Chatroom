@@ -1,43 +1,68 @@
-[gd_scene format=3 uid="uid://bv0we54r8b6p1"]
+[gd_scene load_steps=2 format=3 uid="uid://bv0we54r8b6p1"]
+
+[ext_resource type="Script" path="res://connect.cs" id="1_omukk"]
 
 [node name="Connect" type="Node2D"]
+script = ExtResource("1_omukk")
 
 [node name="IP" type="TextEdit" parent="."]
-offset_left = 184.0
-offset_top = 238.0
-offset_right = 465.0
-offset_bottom = 282.0
+offset_left = 231.0
+offset_top = 290.0
+offset_right = 512.0
+offset_bottom = 334.0
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
-offset_left = 131.0
-offset_top = 239.0
-offset_right = 170.0
-offset_bottom = 279.0
+offset_left = 178.0
+offset_top = 291.0
+offset_right = 217.0
+offset_bottom = 331.0
 text = "IP:"
 
-[node name="Port" type="TextEdit" parent="."]
-offset_left = 616.0
-offset_top = 237.0
-offset_right = 737.0
-offset_bottom = 282.0
-
-[node name="RichTextLabel2" type="RichTextLabel" parent="."]
-offset_left = 559.0
-offset_top = 237.0
-offset_right = 599.0
-offset_bottom = 277.0
-text = "Port:"
-
 [node name="Connect" type="Button" parent="."]
-offset_left = 645.0
-offset_top = 469.0
-offset_right = 807.0
-offset_bottom = 523.0
+offset_left = 733.0
+offset_top = 38.0
+offset_right = 895.0
+offset_bottom = 92.0
 text = "Connect"
 
 [node name="Host" type="Button" parent="."]
-offset_left = 291.0
-offset_top = 474.0
-offset_right = 443.0
-offset_bottom = 526.0
+offset_left = 230.0
+offset_top = 39.0
+offset_right = 382.0
+offset_bottom = 91.0
 text = "Host"
+
+[node name="CanvasGroup" type="CanvasGroup" parent="."]
+position = Vector2(113, 158)
+
+[node name="Port" type="TextEdit" parent="CanvasGroup"]
+offset_left = 119.0
+offset_top = 67.0
+offset_right = 240.0
+offset_bottom = 112.0
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="CanvasGroup"]
+offset_left = 62.0
+offset_top = 67.0
+offset_right = 102.0
+offset_bottom = 107.0
+text = "Port:"
+
+[node name="Name" type="TextEdit" parent="CanvasGroup"]
+offset_left = 117.0
+offset_top = -3.0
+offset_right = 396.0
+offset_bottom = 53.0
+
+[node name="RichTextLabel3" type="RichTextLabel" parent="CanvasGroup"]
+offset_left = -3.0
+offset_top = 10.0
+offset_right = 110.0
+offset_bottom = 57.0
+text = "Username"
+
+[node name="Confirm" type="Button" parent="."]
+offset_left = 500.0
+offset_top = 419.0
+offset_right = 663.0
+offset_bottom = 475.0
