@@ -7,9 +7,11 @@ public partial class connect : Node2D
 	private Button btnHost;
 	private Button btnConfirm;
 
-	private TextEdit ip;
-	private TextEdit port;
+	private TextEdit ipText;
+	private TextEdit portText;
 	private TextEdit name;
+
+	private bool host;
 	
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
@@ -22,24 +24,52 @@ public partial class connect : Node2D
 		btnHost.Pressed += HostPressed;
 		btnConfirm.Pressed += ConfirmPressed;
 
-		ip = GetNode<TextEdit>("IP");
-		port = GetNode<TextEdit>("Port");
+		ipText = GetNode<TextEdit>("IP");
+		portText = GetNode<TextEdit>("Port");
 		name = GetNode<TextEdit>("Name");
 	}
 
 	private void ConnectPressed()
 	{
 		btnConfirm.Text = "Connect";
-		ip.Visible = true;
+		ipText.Visible = true;
+		host = false;
 	}
 	
 	private void HostPressed()
 	{
 		btnConfirm.Text = "Host";
-		ip.Visible = false;
+		ipText.Visible = false;
+		host = true;
 	}
 
 	private void ConfirmPressed()
+	{
+		var ip = ipText.Text;
+		var port = portText.Text;
+		var username = name.Text;
+
+		if (ip == "" || port == "" || username == "")
+		{
+			
+			return;
+		}
+		if (host)
+		{
+			host_server();
+		}
+		else
+		{
+			connect_to_Server();
+		}
+	}
+
+	void connect_to_Server()
+	{
+		
+	}
+
+	void host_server()
 	{
 		
 	}
