@@ -1,0 +1,43 @@
+[gd_scene format=3 uid="uid://bv0we54r8b6p1"]
+
+[node name="Connect" type="Node2D"]
+
+[node name="IP" type="TextEdit" parent="."]
+offset_left = 184.0
+offset_top = 238.0
+offset_right = 465.0
+offset_bottom = 282.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+offset_left = 131.0
+offset_top = 239.0
+offset_right = 170.0
+offset_bottom = 279.0
+text = "IP:"
+
+[node name="Port" type="TextEdit" parent="."]
+offset_left = 616.0
+offset_top = 237.0
+offset_right = 737.0
+offset_bottom = 282.0
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="."]
+offset_left = 559.0
+offset_top = 237.0
+offset_right = 599.0
+offset_bottom = 277.0
+text = "Port:"
+
+[node name="Connect" type="Button" parent="."]
+offset_left = 645.0
+offset_top = 469.0
+offset_right = 807.0
+offset_bottom = 523.0
+text = "Connect"
+
+[node name="Host" type="Button" parent="."]
+offset_left = 291.0
+offset_top = 474.0
+offset_right = 443.0
+offset_bottom = 526.0
+text = "Host"
