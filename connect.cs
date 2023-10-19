@@ -9,11 +9,15 @@ public partial class connect : Node2D
 
 	private TextEdit ipText;
 	private TextEdit portText;
-	private TextEdit name;
+	private TextEdit NameText;
 
 	private bool host;
 
+	private String username;
+
 	private ENetMultiplayerPeer peer;
+
+	private ButtonHandler text_handler;
 	
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
@@ -33,7 +37,7 @@ public partial class connect : Node2D
 
 		ipText = GetNode<TextEdit>("IP");
 		portText = GetNode<TextEdit>("Group/Port");
-		name = GetNode<TextEdit>("Group/Name");
+		NameText = GetNode<TextEdit>("Group/Name");
 	}
 
 	private void ConnectPressed()
@@ -54,7 +58,7 @@ public partial class connect : Node2D
 	{
 		var ip = ipText.Text;
 		var port = portText.Text;
-		var username = name.Text;
+		username = NameText.Text;
 
 		if (port == "" || username == "")
 		{
@@ -85,6 +89,9 @@ public partial class connect : Node2D
 		var scene = ResourceLoader.Load<PackedScene>("res://chat.tscn").Instantiate<Node2D>();
 		GetTree().Root.AddChild(scene);
 		this.Hide();
+		
+		text_handler = GetNode<ButtonHandler>("../Chat/Button");
+		text_handler.update_text("joined Chat");
 	}
 
 	void connect_to_Server(String address, int port)
@@ -114,10 +121,16 @@ public partial class connect : Node2D
 		Multiplayer.MultiplayerPeer = peer;
 		GD.Print("server started");
 	}
+	
+	[Rpc(MultiplayerApi.RpcMode.AnyPeer, CallLocal = false, TransferMode = MultiplayerPeer.TransferModeEnum.Reliable)]
+	void get_username(String name){
+		GD.Print($"{name} joined");
+	}
 
 	private void PeerConnected(long ID)
 	{
 		GD.Print($"{ID} connected");
+		Rpc("get_username",username);
 	}
 
 	private void PeerDisconnected(long ID)
@@ -133,6 +146,18 @@ public partial class connect : Node2D
 	private void ConnectedToServer()
 	{
 		GD.Print("connected to server");
+	}
+
+	public void send_message(String message)
+	{
+		Rpc("receive_message", message);
+	}
+	
+	[Rpc(MultiplayerApi.RpcMode.AnyPeer,CallLocal = true, TransferMode = MultiplayerPeer.TransferModeEnum.Reliable)]
+	private void receive_message(String message)
+	{
+		GD.Print($"recieved {message}");
+		text_handler.update_text(message);
 	}
 
 	
