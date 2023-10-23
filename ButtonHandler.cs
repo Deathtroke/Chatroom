@@ -1,22 +1,24 @@
 using Godot;
 using System;
 
-public partial class ButtonHandler : Button
+public partial class ButtonHandler : Node2D
 {
 	private RichTextLabel text;
 	private TextEdit input;
 	private connect connection_handler;
+	private Button button;
 	
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-		this.Text = "Send Message";
-		this.Pressed += ButtonPressed;
+		button = GetNode<Button>("Button");
+		button.Text = "Send Message";
+		button.Pressed += ButtonPressed;
 
 		
-		text = GetNode<RichTextLabel>("../RichTextLabel");
-		input = GetNode<TextEdit>("../TextEdit");
-		connection_handler = GetNode<connect>("../../Connect");
+		text = GetNode<RichTextLabel>("RichTextLabel");
+		input = GetNode<TextEdit>("TextEdit");
+		connection_handler = GetNode<connect>("../Connect");
 	}
 	
 	private void ButtonPressed()
@@ -26,9 +28,9 @@ public partial class ButtonHandler : Button
 		input.Text = "";
 	}
 
-	public void update_text(String new_line)
+	public void update_text(String name, String message)
 	{
-		text.Text += new_line + "\n";
+		text.Text += $"[{name}]: {message}\n";
 	}
 	
 	
