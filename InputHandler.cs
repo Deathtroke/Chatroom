@@ -16,23 +16,24 @@ public partial class InputHandler : TextEdit
 		if (Text.Contains("\t"))
 		{
 			Text = Text.Replace("\t", "");
-			if (GetNode(FocusNext).GetType() == typeof(Button))
-			{
-				GetNode<Button>(FocusNext).GrabFocus();
-			}
-			else
-			{
-				if (GetNode<TextEdit>(FocusNext).Visible)
-				{
-					GetNode<TextEdit>(FocusNext).GrabFocus();	
-				}
-				else
-				{
-					GetNode<TextEdit>(FocusNext).Text = "\t";
-				}
-				
-			}
-			
+			focus_next();
+		}
+		else if (Text.Contains("\n"))
+		{
+			Text = Text.Replace("\n", "");
+			focus_next();
+		}
+	}
+
+	private void focus_next()
+	{
+		if (GetNode(FocusNext).GetType() == typeof(Button))
+		{
+			GetNode<Button>(FocusNext).GrabFocus();
+		}
+		else
+		{
+			GetNode<TextEdit>(FocusNext).GrabFocus();	
 		}
 	}
 

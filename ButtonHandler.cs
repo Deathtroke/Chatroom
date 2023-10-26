@@ -33,6 +33,10 @@ public partial class ButtonHandler : Node2D
 		text.Text += $"[{name}]: {message}\n";
 	}
 	
+	public void update_text(String message)
+	{
+		text.Text += $"{message}\n";
+	}
 	
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.

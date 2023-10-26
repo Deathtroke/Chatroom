@@ -45,35 +45,48 @@ public partial class connect : Node2D
 		btnHost.GrabFocus();
 		
 		
-		btnConnect.Pressed += ConnectPressed;
-		btnHost.Pressed += HostPressed;
-		btnConfirm.Pressed += ConfirmPressed;
+		btnConnect.Pressed += connect_pressed;
+		btnHost.Pressed += host_pressed;
+		btnConfirm.Pressed += confirm_pressed;
 
 		ipText = GetNode<TextEdit>("IP");
 		portText = GetNode<TextEdit>("Group/Port");
 		NameText = GetNode<TextEdit>("Group/Name");
 	}
 
-	private void ConnectPressed()
+	private void connect_pressed()
 	{
 		btnConfirm.Text = "Connect";
 		ipText.Visible = true;
 		host = false;
+		portText.FocusNext = ipText.GetPath();
+		
+		//for testing
+		NameText.Text = "client";
+		portText.Text = "1234";
+		ipText.Text = "127.0.0.1";
 	}
 	
-	private void HostPressed()
+	private void host_pressed()
 	{
 		btnConfirm.Text = "Host";
 		ipText.Visible = false;
 		host = true;
+		portText.FocusNext = btnConfirm.GetPath();
+		ipText.Text = "";
+		
+		//for testing
+		NameText.Text = "server";
+		portText.Text = "1234";
 	}
 
-	private void ConfirmPressed()
+	private void confirm_pressed()
 	{
 		var ip = ipText.Text;
 		var port = portText.Text;
 		username = NameText.Text;
 
+		//test for valid data
 		if (port == "" || username == "")
 		{
 			if (username == "")
@@ -86,6 +99,8 @@ public partial class connect : Node2D
 			}
 			return;
 		}
+		
+		//process data
 		if (host)
 		{
 			host_server(port.ToInt());
@@ -99,13 +114,13 @@ public partial class connect : Node2D
 			}
 			connect_to_Server(ip, port.ToInt());
 		}
-
+		
+		//switch scene
 		var scene = ResourceLoader.Load<PackedScene>("res://chat.tscn").Instantiate<Node2D>();
 		GetTree().Root.AddChild(scene);
 		this.Hide();
 		
 		text_handler = GetNode<ButtonHandler>("../Chat");
-		text_handler.update_text(username,"joined Chat");
 	}
 
 	void connect_to_Server(String address, int port)
@@ -143,6 +158,7 @@ public partial class connect : Node2D
 	[Rpc(MultiplayerApi.RpcMode.AnyPeer, CallLocal = false, TransferMode = MultiplayerPeer.TransferModeEnum.Reliable)]
 	void get_username(String name){
 		GD.Print($"{name} joined");
+		text_handler.update_text(name + " joined");
 	}
 
 	private void PeerConnected(long id)
@@ -169,6 +185,19 @@ public partial class connect : Node2D
 
 	public void send_message(String message)
 	{
+		if (message.ToCharArray()[0] == '/')
+		{
+			if (message == "/list")
+			{
+				String list_persons = "";
+				foreach (UserInfo person in user)
+				{
+					list_persons += " " + person.Name + " ";
+				}
+				text_handler.update_text(list_persons);
+			}
+			return;
+		}
 		Rpc("receive_message", username, message);
 	}
 	
