@@ -1,10 +1,10 @@
 [gd_scene load_steps=3 format=3 uid="uid://bv0we54r8b6p1"]
 
-[ext_resource type="Script" path="res://connect.cs" id="1_omukk"]
-[ext_resource type="Script" path="res://InputHandler.cs" id="2_ygkwc"]
+[ext_resource type="Script" path="res://connection_handler.cs" id="1_oav53"]
+[ext_resource type="Script" path="res://input_handler.cs" id="2_5ilkg"]
 
 [node name="Connect" type="Node2D"]
-script = ExtResource("1_omukk")
+script = ExtResource("1_oav53")
 
 [node name="IP" type="TextEdit" parent="."]
 offset_left = 231.0
@@ -12,7 +12,7 @@ offset_top = 290.0
 offset_right = 512.0
 offset_bottom = 334.0
 focus_next = NodePath("../Confirm")
-script = ExtResource("2_ygkwc")
+script = ExtResource("2_5ilkg")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
 offset_left = 178.0
@@ -46,7 +46,7 @@ offset_top = 67.0
 offset_right = 240.0
 offset_bottom = 112.0
 focus_next = NodePath("../../IP")
-script = ExtResource("2_ygkwc")
+script = ExtResource("2_5ilkg")
 
 [node name="RichTextLabel2" type="RichTextLabel" parent="Group"]
 offset_left = 62.0
@@ -66,7 +66,7 @@ focus_neighbor_right = NodePath("../Port")
 focus_neighbor_bottom = NodePath("../Port")
 focus_next = NodePath("../Port")
 focus_previous = NodePath("../../Connect")
-script = ExtResource("2_ygkwc")
+script = ExtResource("2_5ilkg")
 
 [node name="RichTextLabel3" type="RichTextLabel" parent="Group"]
 offset_left = -3.0
