@@ -258,9 +258,17 @@ public partial class connection_handler : Node2D
 			Name = name,
 			Id = id
 		};
+
+		bool new_user = true;
+		foreach (var u in user)
+		{
+			if (u.Id == playerInfo.Id)
+			{
+				new_user = false;
+			}
+		}
 		
-		
-		if(!user.Contains(playerInfo)){
+		if(new_user){
 			user.Add(playerInfo);
 			if (connecting)
 			{
@@ -284,10 +292,6 @@ public partial class connection_handler : Node2D
 				{
 					text_handler.update_text(name + " joined");
 				}
-				foreach (var item in user)
-				{
-					GD.Print(item.Name + " - " + item.Id);
-				}
 			}
 		}
 
@@ -295,7 +299,6 @@ public partial class connection_handler : Node2D
 		if (!Multiplayer.IsServer()) return;
 		foreach (var item in user)
 		{
-			GD.Print(item.Name + " - " + item.Id);
 			Rpc("sendPlayerInformation", item.Name, item.Id);
 		}
 	}
