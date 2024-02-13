@@ -13,7 +13,8 @@ offset_bottom = 648.0
 color = Color(0.627451, 0.823529, 0.858824, 1)
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
-offset_right = 1150.0
+offset_left = 16.0
+offset_right = 1129.0
 offset_bottom = 544.0
 theme = ExtResource("2_5dpfc")
 
