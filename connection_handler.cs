@@ -198,6 +198,13 @@ public partial class connection_handler : Node2D
 
 	private void peer_disconnected(long id)
 	{
+		foreach (var u in user)
+		{
+			if (u.Id == id)
+			{
+				user.Remove(u);
+			}
+		}
 		GD.Print($"{id} disconnected");
 	}
 	
