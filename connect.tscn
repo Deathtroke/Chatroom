@@ -1,10 +1,16 @@
-[gd_scene load_steps=3 format=3 uid="uid://bv0we54r8b6p1"]
+[gd_scene load_steps=4 format=3 uid="uid://bv0we54r8b6p1"]
 
 [ext_resource type="Script" path="res://connection_handler.cs" id="1_oav53"]
 [ext_resource type="Script" path="res://input_handler.cs" id="2_5ilkg"]
+[ext_resource type="Theme" uid="uid://da0b4na3sgdrs" path="res://theme.tres" id="3_74bf2"]
 
 [node name="Connect" type="Node2D"]
 script = ExtResource("1_oav53")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 1150.0
+offset_bottom = 648.0
+color = Color(0.627451, 0.823529, 0.858824, 1)
 
 [node name="IP" type="TextEdit" parent="."]
 offset_left = 231.0
@@ -12,13 +18,15 @@ offset_top = 290.0
 offset_right = 512.0
 offset_bottom = 334.0
 focus_next = NodePath("../Confirm")
+theme = ExtResource("3_74bf2")
 script = ExtResource("2_5ilkg")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
-offset_left = 178.0
+offset_left = 189.0
 offset_top = 291.0
-offset_right = 217.0
+offset_right = 232.0
 offset_bottom = 331.0
+theme = ExtResource("3_74bf2")
 text = "IP:"
 
 [node name="Connect" type="Button" parent="."]
@@ -27,6 +35,7 @@ offset_top = 38.0
 offset_right = 895.0
 offset_bottom = 92.0
 focus_next = NodePath("../Group/Name")
+theme = ExtResource("3_74bf2")
 text = "Connect"
 
 [node name="Host" type="Button" parent="."]
@@ -35,6 +44,7 @@ offset_top = 39.0
 offset_right = 382.0
 offset_bottom = 91.0
 focus_next = NodePath("../Connect")
+theme = ExtResource("3_74bf2")
 text = "Host"
 
 [node name="Group" type="CanvasGroup" parent="."]
@@ -46,34 +56,39 @@ offset_top = 67.0
 offset_right = 240.0
 offset_bottom = 112.0
 focus_next = NodePath("../../IP")
+theme = ExtResource("3_74bf2")
 script = ExtResource("2_5ilkg")
 
 [node name="RichTextLabel2" type="RichTextLabel" parent="Group"]
-offset_left = 62.0
-offset_top = 67.0
-offset_right = 102.0
-offset_bottom = 107.0
+offset_left = 55.0
+offset_top = 68.0
+offset_right = 118.0
+offset_bottom = 108.0
+theme = ExtResource("3_74bf2")
 text = "Port:"
 
 [node name="Name" type="TextEdit" parent="Group"]
 offset_left = 117.0
 offset_top = -3.0
 offset_right = 396.0
-offset_bottom = 53.0
+offset_bottom = 45.0
 focus_neighbor_left = NodePath("../../Connect")
 focus_neighbor_top = NodePath("../../Host")
 focus_neighbor_right = NodePath("../Port")
 focus_neighbor_bottom = NodePath("../Port")
 focus_next = NodePath("../Port")
 focus_previous = NodePath("../../Connect")
+theme = ExtResource("3_74bf2")
 script = ExtResource("2_5ilkg")
 
 [node name="RichTextLabel3" type="RichTextLabel" parent="Group"]
-offset_left = -3.0
-offset_top = 10.0
-offset_right = 110.0
-offset_bottom = 57.0
-text = "Username"
+offset_left = -13.0
+offset_top = -1.0
+offset_right = 115.0
+offset_bottom = 46.0
+scale = Vector2(1.01814, 1)
+theme = ExtResource("3_74bf2")
+text = "Username:"
 
 [node name="Confirm" type="Button" parent="."]
 offset_left = 500.0
@@ -81,3 +96,4 @@ offset_top = 419.0
 offset_right = 663.0
 offset_bottom = 475.0
 focus_next = NodePath("../Host")
+theme = ExtResource("3_74bf2")

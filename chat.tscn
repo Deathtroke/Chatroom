@@ -1,26 +1,35 @@
-[gd_scene load_steps=3 format=3 uid="uid://oqkhu2vphlsg"]
+[gd_scene load_steps=4 format=3 uid="uid://oqkhu2vphlsg"]
 
 [ext_resource type="Script" path="res://text_handler.cs" id="1_svnmq"]
+[ext_resource type="Theme" uid="uid://da0b4na3sgdrs" path="res://theme.tres" id="2_5dpfc"]
 [ext_resource type="Script" path="res://input_handler.cs" id="2_jc4o0"]
 
 [node name="Chat" type="Node2D"]
 script = ExtResource("1_svnmq")
 
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 1150.0
+offset_bottom = 648.0
+color = Color(0.627451, 0.823529, 0.858824, 1)
+
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
 offset_right = 1150.0
 offset_bottom = 544.0
+theme = ExtResource("2_5dpfc")
 
 [node name="TextEdit" type="TextEdit" parent="."]
-offset_left = -1.0
-offset_top = 593.0
-offset_right = 899.0
-offset_bottom = 646.0
+offset_left = 3.0
+offset_top = 592.0
+offset_right = 977.0
+offset_bottom = 645.0
 focus_next = NodePath("../Button")
+theme = ExtResource("2_5dpfc")
 script = ExtResource("2_jc4o0")
 
 [node name="Button" type="Button" parent="."]
-offset_left = 1002.0
-offset_top = 581.0
-offset_right = 1146.0
+offset_left = 979.0
+offset_top = 591.0
+offset_right = 1147.0
 offset_bottom = 644.0
+theme = ExtResource("2_5dpfc")
 text = "Send Message"
